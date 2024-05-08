@@ -25,15 +25,19 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        Intent receivingEnd = getIntent();
-        String Name = receivingEnd.getStringExtra("Name");
-        String Desc = receivingEnd.getStringExtra("Desc");
 
         User user = new User("John Doe", "MAD Developer", 1, false);
 
         TextView tvName = findViewById(R.id.tvName);
         TextView tvDescription = findViewById(R.id.tvDescription);
         Button btnFollow = findViewById(R.id.btnFollow);
+
+        tvName.setText(user.name);
+        tvDescription.setText(user.description);
+
+        Intent receivingEnd = getIntent();
+        String Name = receivingEnd.getStringExtra("Name");
+        String Desc = receivingEnd.getStringExtra("Desc");
 
         tvName.setText(Name);
         tvDescription.setText(Desc);

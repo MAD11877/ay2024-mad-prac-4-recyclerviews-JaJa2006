@@ -23,7 +23,7 @@ import java.util.Random;
 public class ListActivity extends AppCompatActivity{
 
 
-    ArrayList<User> users = new ArrayList<>();
+    ArrayList<User> users = new ArrayList<User>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
