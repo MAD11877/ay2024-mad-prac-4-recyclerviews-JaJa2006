@@ -52,7 +52,7 @@ public class ListActivity extends AppCompatActivity implements RecyclerViewInter
 
     }
 
-    @Override
+
     public void onItemClick(int position) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
