@@ -51,29 +51,4 @@ public class ListActivity extends AppCompatActivity{
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(mAdapter);
     }
-
-
-    public void onItemClick(int position) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-
-        builder.setTitle("Profile");
-        builder.setMessage(users.get(position).name);
-        builder.setCancelable(true);
-        builder.setPositiveButton("VIEW", new DialogInterface.OnClickListener(){
-            public void onClick(DialogInterface dialog, int id){
-                Intent activityMain = new Intent(ListActivity.this, MainActivity.class);
-                activityMain.putExtra("Name",users.get(position).name);
-                activityMain.putExtra("Desc",users.get(position).description);
-                startActivity(activityMain);
-            }
-        });
-        builder.setNegativeButton("CLOSE", new DialogInterface.OnClickListener(){
-            public void onClick(DialogInterface dialog, int id){
-            }
-        });
-        AlertDialog alert = builder.create();
-        alert.show();
-    }
-
-
 }
