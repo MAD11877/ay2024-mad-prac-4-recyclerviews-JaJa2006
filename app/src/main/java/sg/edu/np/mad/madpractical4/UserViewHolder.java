@@ -18,35 +18,13 @@ public class UserViewHolder extends RecyclerView.ViewHolder{
     ImageView bigimage;
 
 
-    public UserViewHolder(View itemView, RecyclerViewInterface recyclerViewInterface) {
+    public UserViewHolder(View itemView) {
         super(itemView);
         name = itemView.findViewById(R.id.TVname);
         description = itemView.findViewById(R.id.TVdescription);
         smallimage = itemView.findViewById(R.id.IVprofile);
         bigimage = itemView.findViewById(R.id.IVprofile2);
-        smallimage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (recyclerViewInterface != null) {
-                    int pos = getAdapterPosition();
-                    if (pos !=RecyclerView.NO_POSITION) {
-                        recyclerViewInterface.onItemClick(pos);
-                    }
-                }
-            }
-        });
-        bigimage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-                if (recyclerViewInterface != null) {
-                    int pos = getAdapterPosition();
-                    if (pos !=RecyclerView.NO_POSITION) {
-                        recyclerViewInterface.onItemClick(pos);
-                    }
-                }
-            }
-        });
     }
 }
 

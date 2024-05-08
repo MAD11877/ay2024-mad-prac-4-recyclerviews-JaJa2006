@@ -16,17 +16,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 public class UserAdapter extends RecyclerView.Adapter<UserViewHolder>{
-    private final RecyclerViewInterface recyclerViewInterface;
     ArrayList<User> data;
-    public UserAdapter(ArrayList<User> input, RecyclerViewInterface recyclerViewInterface) {
+    public UserAdapter(ArrayList<User> input) {
         data = input;
-        this.recyclerViewInterface = recyclerViewInterface;
     }
 
     public UserViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View item = LayoutInflater.from(parent.getContext()).inflate(
                 R.layout.custom_activity_list, parent, false);
-        return new UserViewHolder(item, recyclerViewInterface);
+        return new UserViewHolder(item);
     }
     public void onBindViewHolder(UserViewHolder holder, int position) {
         User user = data.get(position);
@@ -37,14 +35,62 @@ public class UserAdapter extends RecyclerView.Adapter<UserViewHolder>{
             holder.bigimage.setVisibility(View.GONE);
             holder.name.setText(user.name);
             holder.description.setText(user.description);
+            holder.smallimage.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
 
+                    builder.setTitle("Profile");
+                    builder.setMessage(user.name);
+                    builder.setCancelable(true);
+                    builder.setPositiveButton("VIEW", new DialogInterface.OnClickListener(){
+                        public void onClick(DialogInterface dialog, int id){
+                            Intent activityMain = new Intent(v.getContext(), MainActivity.class);
+                            activityMain.putExtra("Name",user.name);
+                            activityMain.putExtra("Desc",user.description);
+                            v.getContext().startActivity(activityMain);
+                        }
+                    });
+                    builder.setNegativeButton("CLOSE", new DialogInterface.OnClickListener(){
+                        public void onClick(DialogInterface dialog, int id){
+                        }
+                    });
+                    AlertDialog alert = builder.create();
+                    alert.show();
+                }
+            });
         }
         else {
             holder.name.setVisibility(View.GONE);
             holder.description.setVisibility(View.GONE);
             holder.smallimage.setVisibility(View.GONE);
             holder.bigimage.setVisibility(View.VISIBLE);
+            holder.bigimage.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
+
+                    builder.setTitle("Profile");
+                    builder.setMessage(user.name);
+                    builder.setCancelable(true);
+                    builder.setPositiveButton("VIEW", new DialogInterface.OnClickListener(){
+                        public void onClick(DialogInterface dialog, int id){
+                            Intent activityMain = new Intent(v.getContext(), MainActivity.class);
+                            activityMain.putExtra("Name",user.name);
+                            activityMain.putExtra("Desc",user.description);
+                            v.getContext().startActivity(activityMain);
+                        }
+                    });
+                    builder.setNegativeButton("CLOSE", new DialogInterface.OnClickListener(){
+                        public void onClick(DialogInterface dialog, int id){
+                        }
+                    });
+                    AlertDialog alert = builder.create();
+                    alert.show();
+                }
+            });
         }
+
 
     }
     public int getItemCount() {

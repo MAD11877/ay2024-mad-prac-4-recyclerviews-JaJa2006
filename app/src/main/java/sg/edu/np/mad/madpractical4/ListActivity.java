@@ -20,7 +20,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class ListActivity extends AppCompatActivity implements RecyclerViewInterface{
+public class ListActivity extends AppCompatActivity{
+
 
     ArrayList<User> users = new ArrayList<>();
 
@@ -43,13 +44,12 @@ public class ListActivity extends AppCompatActivity implements RecyclerViewInter
         }
 
         RecyclerView recyclerView = findViewById(R.id.RVprofile);
-        UserAdapter mAdapter = new UserAdapter(users, this);
+        UserAdapter mAdapter = new UserAdapter(users);
         LinearLayoutManager mLayoutManager = new LinearLayoutManager(this);
 
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(mAdapter);
-
     }
 
 
@@ -74,4 +74,6 @@ public class ListActivity extends AppCompatActivity implements RecyclerViewInter
         AlertDialog alert = builder.create();
         alert.show();
     }
+
+
 }
