@@ -17,8 +17,8 @@ import java.util.ArrayList;
 
 public class UserAdapter extends RecyclerView.Adapter<UserViewHolder>{
     ArrayList<User> data;
-    public UserAdapter(ArrayList<User> input) {
-        data = input;
+    public UserAdapter(ArrayList<User> input, Context context) {
+        this.data = input;
     }
 
     public UserViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
