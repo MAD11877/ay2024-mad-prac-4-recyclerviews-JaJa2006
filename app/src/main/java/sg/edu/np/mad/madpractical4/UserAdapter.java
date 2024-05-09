@@ -48,6 +48,8 @@ public class UserAdapter extends RecyclerView.Adapter<UserViewHolder>{
                             Intent activityMain = new Intent(v.getContext(), MainActivity.class);
                             activityMain.putExtra("Name",user.name);
                             activityMain.putExtra("Desc",user.description);
+                            activityMain.putExtra("ID",user.id);
+                            activityMain.putExtra("Follow",user.followed);
                             v.getContext().startActivity(activityMain);
                         }
                     });

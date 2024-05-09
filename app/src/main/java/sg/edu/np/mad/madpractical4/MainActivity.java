@@ -38,10 +38,19 @@ public class MainActivity extends AppCompatActivity {
         Intent receivingEnd = getIntent();
         String Name = receivingEnd.getStringExtra("Name");
         String Desc = receivingEnd.getStringExtra("Desc");
+        int Id = receivingEnd.getIntExtra("ID",0);
+        Boolean Follow = receivingEnd.getBooleanExtra("Follow",false);
 
-        tvName.setText(Name);
-        tvDescription.setText(Desc);
-        btnFollow.setText("Follow");
+        User user2 = new User(Name,Desc,Id,Follow);
+
+        tvName.setText(user2.name);
+        tvDescription.setText(user2.description);
+        if (user2.followed == true) {
+            btnFollow.setText("Unfollow");
+        }
+        else{
+            btnFollow.setText("Follow");
+        }
 
         btnFollow.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,10 +58,12 @@ public class MainActivity extends AppCompatActivity {
                 if (btnFollow.getText().toString()=="Follow") {
                     btnFollow.setText("Unfollow");
                     Toast.makeText(MainActivity.this, "Followed", Toast.LENGTH_SHORT).show();
+                    user.followed = true;
                 }
                 else{
                     btnFollow.setText("Follow");
                     Toast.makeText(MainActivity.this, "Unfollowed", Toast.LENGTH_SHORT).show();
+                    user.followed = false;
                 }
 
             }

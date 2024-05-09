@@ -39,7 +39,8 @@ public class ListActivity extends AppCompatActivity{
         for (int i = 1; i <= 20; i++) {
             int name = Math.abs(rand.nextInt());
             int description = Math.abs(rand.nextInt());
-            User user = new User("Name"+name, "description "+description, i, false);
+            boolean followed = rand.nextBoolean();
+            User user = new User("Name"+name, "description "+description, i, followed);
             users.add(user);
         }
 
